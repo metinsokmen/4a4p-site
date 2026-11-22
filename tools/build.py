@@ -419,7 +419,7 @@ def sayfa(dil: str) -> str:
     </div>
     <div class="row2">
       <span>{e(d["f2"])}</span>
-      <span class="sp"><a href="https://entorina.com" rel="noopener">entorina.com ↗</a><a href="https://geriatri.net" rel="noopener">geriatri.net ↗</a><span>© 2026 4A4P</span></span>
+      <span class="sp"><span>© 2026 4A4P</span></span>
     </div>
   </div>
 </footer>

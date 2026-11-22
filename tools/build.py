@@ -291,16 +291,23 @@ def sayfa(dil: str) -> str:
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{e(d["title"])}</title>
 <meta name="description" content="{e(d["desc"])}">
-<meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#0b1214">
+<link rel="canonical" href="https://4a4p.com{d["kok"]}">
 <link rel="alternate" hreflang="tr" href="https://4a4p.com/">
 <link rel="alternate" hreflang="en" href="https://4a4p.com/en/">
+<link rel="alternate" hreflang="x-default" href="https://4a4p.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="4A4P">
+<meta property="og:url" content="https://4a4p.com{d["kok"]}">
+<meta property="og:title" content="{e(d["title"])}">
+<meta property="og:description" content="{e(d["desc"])}">
+<meta property="og:locale" content="{"tr_TR" if dil == "tr" else "en_US"}">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/fonts/manrope-variable.woff" as="font" type="font/woff" crossorigin>
 <link rel="stylesheet" href="/assets/site.css">
 <script>
   document.documentElement.classList.add("js");
-  try {{ var t = localStorage.getItem("4a4p-dil"); {yonlendir} }} catch (e) {{}}
+  try {{ var t = localStorage.getItem("4a4p-dil") || /bot|crawl|spider|slurp/i.test(navigator.userAgent); {yonlendir} }} catch (e) {{}}
 </script>
 </head>
 <body>

@@ -6,7 +6,7 @@ Bağımsız statik site. Sayfalar `tools/build.py` ile üretilir (`python3 tools
 - Fontlar yerel (Manrope, Newsreader Italic; OFL lisansları `assets/fonts/`); ziyaretçi üçüncü tarafa bağlanmaz.
 - İlk ziyarette Türkçe olmayan tarayıcı `/en/`'e gider; TR/EN tıklaması `localStorage["4a4p-dil"]` ile hatırlanır.
 - Barındırma: GitHub Pages (ücretsiz). `CNAME` = `4a4p.com`. DNS Spaceship'te (ayrıntı swingod kökündeki `4a4p.md` §10).
-- Arama motoru kapalı: `robots.txt` `Disallow: /` ve sayfalarda `noindex`. Açmak ayrı karardır.
+- Arama motorlarına açık (2026-11-22): `robots.txt` Allow + `sitemap.xml`; sayfalarda canonical + hreflang (tr, en, x-default) + Open Graph. Dil yönlendirmesi botlarda çalışmaz (her dil kendi adresinde dizinlenir). `404.html` `noindex` kalır.
 - Kural: araştırma doğrulanmadan sonuç, katsayı ya da risk puanı yayımlanmaz (`4a4p.md` §3).
 
 Yerel önizleme: `python3 -m http.server 8790` (bu klasörde) → http://localhost:8790

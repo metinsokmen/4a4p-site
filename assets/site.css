@@ -99,6 +99,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .eyebrow { color: var(--on-night-2); display: flex; align-items: center; gap: 12px; margin-bottom: 30px; }
 .eyebrow::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--garnet); box-shadow: 0 0 0 4px rgba(180, 81, 63, 0.18); }
 .hero h1 { font-size: clamp(46px, 5.6vw, 84px); }
+/* "Measuring reserve." TR başlıktan ~%10 uzun: masaüstünde tek satırda kalsın */
+html[lang="en"] .hero h1 { font-size: clamp(42px, 4.9vw, 68px); }
 .hero .lead { margin-top: 34px; max-width: 30em; color: var(--on-night-2); font-size: 16.5px; line-height: 1.75; }
 .cta { display: flex; align-items: center; gap: 30px; margin-top: 44px; flex-wrap: wrap; }
 .btn { display: inline-flex; align-items: center; gap: 30px; padding: 19px 22px 19px 26px; background: var(--on-night); color: var(--night); font-size: 14px; font-weight: 600; transition: background .3s, gap .4s var(--ease); }

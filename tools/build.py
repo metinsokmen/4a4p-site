@@ -287,7 +287,7 @@ def sayfa(dil: str) -> str:
     ilk_dil_secimi = '''
   try {
     const tercih = localStorage.getItem("4a4p-dil");
-    const bot = /bot|crawl|spider|slurp/i.test(navigator.userAgent);
+    const bot = /bot|crawl|spider|slurp|google-inspectiontool/i.test(navigator.userAgent);
     if (!tercih && !bot && !/^tr/i.test(navigator.language || "")) {
       location.replace("/en/" + location.search + location.hash);
     }

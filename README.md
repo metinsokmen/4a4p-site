@@ -4,7 +4,7 @@ Bağımsız statik site. Sayfalar `tools/build.py` ile üretilir (`python3 tools
 
 - `index.html` Türkçe, `en/index.html` İngilizce — elle düzenlenmez, `tools/build.py` düzenlenip yeniden üretilir. Stil `assets/site.css`, etkileşim `assets/site.js`.
 - Fontlar yerel (Manrope, Newsreader Italic; OFL lisansları `assets/fonts/`); ziyaretçi üçüncü tarafa bağlanmaz.
-- İlk ziyarette Türkçe olmayan tarayıcı `/en/`'e gider; TR/EN tıklaması `localStorage["4a4p-dil"]` ile hatırlanır.
+- İlk ziyaret `/` adresindeyse ve tarayıcı dili Türkçe değilse `/en/` açılır. Doğrudan açılan `/en/` her tarayıcıda İngilizce kalır. TR/EN bağlantıları temiz URL'leri kullanır ve dil tercihi `localStorage["4a4p-dil"]` anahtarında hatırlanır.
 - Barındırma: GitHub Pages (ücretsiz). `CNAME` = `4a4p.com`. DNS Spaceship'te (ayrıntı swingod kökündeki `4a4p.md` §10).
 - Arama motorlarına açık (2026-11-22): `robots.txt` Allow + `sitemap.xml`; sayfalarda canonical + hreflang (tr, en, x-default) + Open Graph. Dil yönlendirmesi botlarda çalışmaz (her dil kendi adresinde dizinlenir). `404.html` `noindex` kalır.
 - Kural: araştırma doğrulanmadan sonuç, katsayı ya da risk puanı yayımlanmaz (`4a4p.md` §3).

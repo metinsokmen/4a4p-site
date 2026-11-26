@@ -127,7 +127,8 @@ T = {
                 ("Inzitari ve ark. 2009 · LADIS", "BMJ 339:b2477", "Beyaz cevher değişiklikleri ve yeti yitimi.", "10.1136/bmj.b2477")],
         f1="Yaşlı hastanın tedaviye dayanıklılığını anlamaya yönelik bir araştırma.", yukari="Yukarı",
         f2="4A4P bir araştırma projesidir; klinik kararlarda kullanılmak üzere tasarlanmamıştır.",
-        sec_tr='<span>TR</span>', sec_en='<a href="/en/" data-dil="en">EN</a>',
+        sec_tr='<span aria-current="page">TR</span>',
+        sec_en='<a href="/en/" lang="en" hreflang="en" aria-label="English" data-dil="en">EN</a>',
     ),
     "en": dict(
         lang="en", kok="/en/", title="4A4P — Geriatric Anatomy and Performance Score",
@@ -180,7 +181,8 @@ T = {
                 ("Inzitari et al. 2009 · LADIS", "BMJ 339:b2477", "White matter changes and disability.", "10.1136/bmj.b2477")],
         f1="Research on how well older patients tolerate treatment.", yukari="Top",
         f2="4A4P is a research project, not a clinical decision tool.",
-        sec_tr='<a href="/" data-dil="tr">TR</a>', sec_en='<span>EN</span>',
+        sec_tr='<a href="/" lang="tr" hreflang="tr" aria-label="Türkçe" data-dil="tr">TR</a>',
+        sec_en='<span aria-current="page">EN</span>',
     ),
 }
 
@@ -282,8 +284,14 @@ def sayfa(dil: str) -> str:
                   for k, (s, st, b, m) in enumerate(d["yol"]))
     kaynak = "".join(f'<li><div><b>{e(a)}</b> · {e(j)}<br>{e(n)}<br><a href="https://doi.org/{doi}" rel="noopener">doi:{doi}</a></div></li>'
                      for a, j, n, doi in d["kaynak"])
-    yonlendir = ('if (!t && !/^tr/i.test(navigator.language || "")) location.replace("/en/");' if dil == "tr"
-                 else 'if (!t && /^tr/i.test(navigator.language || "")) location.replace("/");')
+    ilk_dil_secimi = '''
+  try {
+    const tercih = localStorage.getItem("4a4p-dil");
+    const bot = /bot|crawl|spider|slurp/i.test(navigator.userAgent);
+    if (!tercih && !bot && !/^tr/i.test(navigator.language || "")) {
+      location.replace("/en/" + location.search + location.hash);
+    }
+  } catch {}''' if dil == "tr" else ""
     return f'''<!doctype html>
 <html lang="{d["lang"]}">
 <head>
@@ -306,8 +314,7 @@ def sayfa(dil: str) -> str:
 <link rel="preload" href="/assets/fonts/manrope-variable.woff" as="font" type="font/woff" crossorigin>
 <link rel="stylesheet" href="/assets/site.css">
 <script>
-  document.documentElement.classList.add("js");
-  try {{ var t = localStorage.getItem("4a4p-dil") || /bot|crawl|spider|slurp/i.test(navigator.userAgent); {yonlendir} }} catch (e) {{}}
+  document.documentElement.classList.add("js");{ilk_dil_secimi}
 </script>
 </head>
 <body>

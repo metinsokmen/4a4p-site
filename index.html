@@ -21,7 +21,13 @@
 <link rel="stylesheet" href="/assets/site.css">
 <script>
   document.documentElement.classList.add("js");
-  try { var t = localStorage.getItem("4a4p-dil") || /bot|crawl|spider|slurp/i.test(navigator.userAgent); if (!t && !/^tr/i.test(navigator.language || "")) location.replace("/en/"); } catch (e) {}
+  try {
+    const tercih = localStorage.getItem("4a4p-dil");
+    const bot = /bot|crawl|spider|slurp/i.test(navigator.userAgent);
+    if (!tercih && !bot && !/^tr/i.test(navigator.language || "")) {
+      location.replace("/en/" + location.search + location.hash);
+    }
+  } catch {}
 </script>
 </head>
 <body>
@@ -30,7 +36,7 @@
   <div class="wrap">
     <a class="brand" href="/" aria-label="4A4P"><svg viewBox="0 0 30 30" aria-hidden="true"><rect x="3.0" y="8" width="4.5" height="5" rx="1" fill="var(--gold)"/><rect x="9.5" y="8" width="4.5" height="5" rx="1" fill="var(--gold)"/><rect x="16.0" y="8" width="4.5" height="5" rx="1" fill="var(--gold)"/><rect x="22.5" y="8" width="4.5" height="5" rx="1" fill="var(--gold)"/><rect x="3.0" y="16" width="4.5" height="5" rx="1" fill="var(--sage)"/><rect x="9.5" y="16" width="4.5" height="5" rx="1" fill="var(--sage)"/><rect x="16.0" y="16" width="4.5" height="5" rx="1" fill="var(--sage)"/><rect x="22.5" y="16" width="4.5" height="5" rx="1" fill="var(--sage)"/></svg><span>4A<b>4</b>P</span></a>
     <nav><a href="#yaklasim">Yaklaşım</a><a href="#alanlar">Sekiz alan</a><a href="#soru">Soru</a><a href="#ilkeler">İlkeler</a><a href="#yol">Yol haritası</a></nav>
-    <div class="lang"><span>TR</span><a href="/en/" data-dil="en">EN</a></div>
+    <div class="lang"><span aria-current="page">TR</span><a href="/en/" lang="en" hreflang="en" aria-label="English" data-dil="en">EN</a></div>
   </div>
 </header>
 
